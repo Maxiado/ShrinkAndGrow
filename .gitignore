@@ -17,6 +17,6 @@ MemoryCaptures/
 *.pidb
 *.booproj
 *.svd
-
+**/.idea/
 .DS_Store
 Thumbs.db
