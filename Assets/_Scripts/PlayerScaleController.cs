@@ -1,3 +1,4 @@
+using _Scripts.Progress;
 using UnityEngine;
 using Cinemachine;
 
@@ -116,7 +117,7 @@ public class PlayerScaleController : MonoBehaviour
     void SetSize(PlayerSize newSize, bool instant = false)
     {
         currentSize = newSize;
-
+        LevelScoreManager.Instance.RegisterTransformation();
         switch (currentSize)
         {
             case PlayerSize.Micro:
