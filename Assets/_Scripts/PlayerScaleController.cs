@@ -117,13 +117,13 @@ public class PlayerScaleController : MonoBehaviour
     void SetSize(PlayerSize newSize, bool instant = false)
     {
         currentSize = newSize;
-        LevelScoreManager.Instance.RegisterTransformation();
         switch (currentSize)
         {
             case PlayerSize.Micro:
                 targetScale = microScale;
                 targetCamDistance = microCamDistance;
                 rb.mass = microMass;
+                LevelScoreManager.Instance.RegisterTransformation();
                 break;
             case PlayerSize.Normal:
                 targetScale = normalScale;
@@ -134,6 +134,7 @@ public class PlayerScaleController : MonoBehaviour
                 targetScale = titanScale;
                 targetCamDistance = titanCamDistance;
                 rb.mass = titanMass;
+                LevelScoreManager.Instance.RegisterTransformation();
                 break;
         }
 
