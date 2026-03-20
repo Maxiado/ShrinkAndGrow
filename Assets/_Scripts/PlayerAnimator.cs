@@ -3,28 +3,43 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [Header("Referencias")]
-    public Animator animator; // Arrastra el modelo 3D que tiene el Animator aquí
+    public Animator animator; 
     
     private PlayerMovement movement;
     private PlayerScaleController scaleController;
 
     void Start()
     {
-        // Buscamos los componentes en el objeto principal (la cápsula)
         movement = GetComponentInParent<PlayerMovement>();
         scaleController = GetComponentInParent<PlayerScaleController>();
+
+        // Nos suscribimos al evento de salto del script de físicas
+        if (movement)
+        {
+            movement.OnJumpTriggered += TriggerJumpAnimation;
+        }
     }
 
     void Update()
     {
-        if (animator == null || movement == null || scaleController == null) return;
+        if (!animator || !movement || !scaleController) return;
 
-        // 1. Enviar la velocidad actual (Para pasar de Idle a Walk)
         animator.SetFloat("Speed", movement.CurrentSpeed);
+        animator.SetInteger("SizeMode", (int)scaleController.currentSize);
+        
+        // ¡NUEVO! Le decimos al Animator si estamos tocando el suelo o cayendo
+        animator.SetBool("IsGrounded", movement.IsGrounded);
+    }
 
-        // 2. Enviar el Modo de Tamaño
-        // Casteamos el Enum (Micro=0, Normal=1, Titan=2) a un número entero (Int)
-        int sizeModeInt = (int)scaleController.currentSize;
-        animator.SetInteger("SizeMode", sizeModeInt);
+    private void TriggerJumpAnimation()
+    {
+        // Disparamos el Trigger de salto en el Animator
+        if (animator) animator.SetTrigger("Jump");
+    }
+
+    private void OnDestroy()
+    {
+        // Buena práctica: desuscribirse del evento al destruir el objeto
+        if (movement) movement.OnJumpTriggered -= TriggerJumpAnimation;
     }
 }

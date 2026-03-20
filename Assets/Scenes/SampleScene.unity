@@ -512,6 +512,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174127614}
   m_CullTransparentMesh: 1
+--- !u!4 &232072681 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1901664911830060492, guid: 3933d60c7214e2b43b5ebee45021bc9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 158272443165867471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &280011311
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +878,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3315377, y: 1.3399999, z: -5.033155}
+  m_LocalPosition: {x: 4.3315377, y: 4.3190002, z: -6.933156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1172,7 +1178,7 @@ MonoBehaviour:
   timerText: {fileID: 174127616}
   multiplierText: {fileID: 332976217}
   transformationCountText: {fileID: 2025739596}
-  inLevelScrapsText: {fileID: 280011313}
+  inLevelScrapsText: {fileID: 0}
   inLevelScrapsCollected: 0
 --- !u!4 &341456111
 Transform:
@@ -1619,8 +1625,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1588205918}
-  m_Follow: {fileID: 1588205918}
+  m_LookAt: {fileID: 232072681}
+  m_Follow: {fileID: 232072681}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -1649,7 +1655,7 @@ Transform:
   m_GameObject: {fileID: 547871568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3315377, y: 1.3399999, z: -5.033155}
+  m_LocalPosition: {x: 4.3315377, y: 4.3190002, z: -6.933156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2539,7 +2545,7 @@ GameObject:
   - component: {fileID: 857065671}
   - component: {fileID: 857065670}
   - component: {fileID: 857065669}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3129,7 +3135,7 @@ GameObject:
   - component: {fileID: 1169536905}
   - component: {fileID: 1169536904}
   - component: {fileID: 1169536903}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3568,12 +3574,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520868321}
   m_CullTransparentMesh: 1
---- !u!4 &1588205918 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8949716817974959691, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 158272443165867471}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1626439581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,7 +3984,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 0.1
+  m_CameraDistance: 2.000001
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0

@@ -6,6 +6,8 @@ public class TitanFootsteps : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     private PlayerScaleController scaleController;
 
+    [SerializeField] private float impulseForce;
+        
     void Start()
     {
         // Buscamos el Impulse Source en el padre (la cápsula)
@@ -21,7 +23,7 @@ public class TitanFootsteps : MonoBehaviour
             if (impulseSource != null)
             {
                 // Dispara el temblor de cámara
-                impulseSource.GenerateImpulseWithForce(0.5f); // Ajusta la fuerza aquí
+                impulseSource.GenerateImpulseWithForce(impulseForce); // Ajusta la fuerza aquí
                 
                 // Opcional: Aquí puedes poner un sonido de "PUM" de paso pesado
                 // AudioSource.PlayClipAtPoint(sonidoPasoTitan, transform.position);
