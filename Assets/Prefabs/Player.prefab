@@ -528,6 +528,8 @@ GameObject:
   - component: {fileID: 8821273932006428415}
   - component: {fileID: 7759264202033577576}
   - component: {fileID: 14261931112535505}
+  - component: {fileID: 7760962862630801931}
+  - component: {fileID: 3667259190501410981}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -704,6 +706,40 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0.1, y: 0.1, z: 0.2}
+--- !u!114 &7760962862630801931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566104228777583527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af5c84308ff0147a494834351add14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 5230150868533916156}
+  - {fileID: 1627284956317732528}
+  - {fileID: 4140380431609320850}
+  - {fileID: 1558922232454409723}
+  - {fileID: 5434606050238753216}
+  propertyName: _ScannerPositionY
+  startValue: -1
+  endValue: 6
+  durationPerSweep: 4
+--- !u!114 &3667259190501410981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566104228777583527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7660c6f5f47e364cb6a36189ae506ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4096535751705922332
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +870,37 @@ Transform:
   - {fileID: 3080729917265989718}
   m_Father: {fileID: 2456822695434238168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4553359708303556485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161491540911943854}
+  m_Layer: 0
+  m_Name: ImpactPoint_Stomp
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161491540911943854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553359708303556485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3345601219080744815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4593295733929657356
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +977,7 @@ GameObject:
   - component: {fileID: 3166387827123085811}
   - component: {fileID: 4793920179497963366}
   - component: {fileID: 2700618092176752125}
+  - component: {fileID: 3126316567447823080}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -963,7 +1031,10 @@ Animator:
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'mixamorig:RightToeBase'\n\tFrom animation clip
+    'Stomp'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -981,6 +1052,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulseForce: 1.5
+--- !u!114 &3126316567447823080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5088310127439431814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e01f7bc058d824cb1815a332cd3e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4793920179497963366}
+  rendererSuelo: {fileID: 0}
+  puntoDeImpacto: {fileID: 1161491540911943854}
+  teclaActivacion: 114
 --- !u!1 &5398110657190182995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2062,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1516267330273433667}
+  - {fileID: 1161491540911943854}
   m_Father: {fileID: 8702667041486338988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8697486073256732772
