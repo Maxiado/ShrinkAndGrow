@@ -13,7 +13,6 @@ namespace _Scripts
 
         [Header("Configuración")] public KeyCode teclaActivacion = KeyCode.R;
 
-        // Candado para no repetir la animación antes de que termine
         private bool habilidadEnUso = false;
 
         private void Start()
@@ -31,7 +30,6 @@ namespace _Scripts
 
         private void Update()
         {
-            // Solo activamos si presionas R y no está ya pisando
             if (!Input.GetKeyDown(teclaActivacion)) return;
             {
                 if (!habilidadEnUso) EjecutarPisoton();
@@ -41,33 +39,20 @@ namespace _Scripts
         private void EjecutarPisoton()
         {
             habilidadEnUso = true;
-
-            // Le decimos al Animator que bloquee el "Any State"
             animator.SetBool("HaciendoPisoton", true);
-
-            // Disparamos la transición hacia la animación
             animator.SetTrigger("HacerPisoton");
         }
 
 
         public void Evento_FinAnimacion()
         {
-            // Apagamos el candado de la habilidad
             habilidadEnUso = false;
-
-            // Le decimos al Animator que "Any State" ya puede volver a funcionar
             animator.SetBool("HaciendoPisoton", false);
         }
-
-        // --- EVENTOS DE ANIMACIÓN (Los llama Unity, no el Update) ---
-
-        // 1. Pon este evento en la línea de tiempo EXACTAMENTE cuando el zapato choca con el piso
         public void Evento_PieTocaElSuelo()
         {
             DispararPulsoEnShader();
         }
-
-
         private void DispararPulsoEnShader()
         {
             if (!materialSuelo) return;
