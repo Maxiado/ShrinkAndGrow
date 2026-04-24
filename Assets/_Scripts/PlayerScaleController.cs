@@ -1,6 +1,7 @@
 using _Scripts.Progress;
 using UnityEngine;
 using Cinemachine;
+using Materials.VFX.ShadersGraph.Floor;
 
 public class PlayerScaleController : MonoBehaviour
 {
