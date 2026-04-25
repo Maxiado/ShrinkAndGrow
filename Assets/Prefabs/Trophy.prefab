@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 414856742552051508}
   - component: {fileID: 5869758322059830625}
   m_Layer: 0
-  m_Name: Scrap
+  m_Name: Trophy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

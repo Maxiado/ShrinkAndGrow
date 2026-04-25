@@ -19,11 +19,13 @@ public class LevelScoreManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI multiplierText;
     public TextMeshProUGUI transformationCountText;
+    public TextMeshProUGUI trophysCounterText;
     
     // ¡NUEVA VARIABLE PARA LA CHATARRA!
     public TextMeshProUGUI inLevelScrapsText; 
 
     [HideInInspector] public int inLevelScrapsCollected = 0;
+    [HideInInspector] public int inLevelTrophysCollected = 0;
     
     private float timeElapsed = 0f;
     private int transformationsUsed = 0;
@@ -68,6 +70,13 @@ public class LevelScoreManager : MonoBehaviour
         // ¡Llamamos a la actualización visual inmediatamente!
         UpdateScrapsUI(); 
     }
+    
+    public void AddInLevelTrophy(int amount)
+    {
+        if (levelCompleted) return;
+        inLevelTrophysCollected += amount;
+        UpdateTrophysUI(); 
+    }
 
     public float GetCurrentMultiplier()
     {
@@ -85,7 +94,13 @@ public class LevelScoreManager : MonoBehaviour
             // Aquí podrías disparar una animación para que el número "salte"
         }
     }
-
+    private void UpdateTrophysUI()
+    {
+        if (trophysCounterText)
+        {
+            trophysCounterText.text = $"{inLevelTrophysCollected}";
+        }
+    }
     private void UpdateUI()
     {
         // (Aquí va el mismo código que ya tenías para actualizar el tiempo, el multiplicador y las transformaciones)

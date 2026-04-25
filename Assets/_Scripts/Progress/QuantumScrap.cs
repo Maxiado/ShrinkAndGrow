@@ -14,11 +14,11 @@ namespace _Scripts.Progress
 
         private bool isCollected = false;
 
-        void Update()
-        {
-            // Hace que el objeto rote constantemente en el eje Y
-            transform.Rotate(Vector3.up * (spinSpeed * Time.deltaTime), Space.World);
-        }
+        // void Update()
+        // {
+        //     // Hace que el objeto rote constantemente en el eje Y
+        //     transform.Rotate(Vector3.up * (spinSpeed * Time.deltaTime), Space.World);
+        // }
 
         void OnTriggerEnter(Collider other)
         {
