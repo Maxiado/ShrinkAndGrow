@@ -52,15 +52,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Metallic: 1
+    - _Metallic: 0.77
     - _PulseRadius: 50
-    - _Pulse_Duration: 1
+    - _Pulse_Duration: 2
     - _Pulse_FadeTime: 2
-    - _Pulse_Radius: 0.8
-    - _Pulse_Speed: 10
+    - _Pulse_Radius: 1
+    - _Pulse_Speed: 8
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.2
+    - _Smoothness: 1
     - _StepRing_Size: 0.05
     - _Step_Time: 1
     - _Time1: 0
@@ -68,9 +68,9 @@ Material:
     - _Time3: 0
     m_Colors:
     - _Color_Base: {r: 0.21698102, g: 0.21698102, b: 0.21698102, a: 0}
-    - _Color_Lines_Base: {r: 0, g: 0, b: 0, a: 0}
-    - _Color_Neon: {r: 20.184107, g: 0, b: 23.968626, a: 0}
-    - _Color_Plaque: {r: 0.42452827, g: 0.42452827, b: 0.42452827, a: 0}
+    - _Color_Lines_Base: {r: 0.009745443, g: 0.6886792, b: 0.35434395, a: 0}
+    - _Color_Neon: {r: 107.89526, g: 0, b: 128, a: 0}
+    - _Color_Plaque: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 0}
     - _Pos1: {r: 0, g: 0, b: 0, a: 0}
     - _Pos2: {r: 0, g: 0, b: 0, a: 0}
     - _Pos3: {r: 0, g: 0, b: 0, a: 0}

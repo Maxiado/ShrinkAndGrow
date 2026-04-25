@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Scripts
@@ -12,7 +14,12 @@ namespace _Scripts
         public Transform puntoDeImpacto;
 
         [Header("Configuración")] public KeyCode teclaActivacion = KeyCode.R;
-
+     
+        [Header("Onda Expansiva (Shockwave)")]
+        public float radioMaximoShockwave = 10f;      
+        public float velocidadExpansionShockwave = 15f; 
+        public LayerMask capaCajas;
+        
         private bool habilidadEnUso = false;
 
         private void Start()
@@ -20,6 +27,7 @@ namespace _Scripts
             if (rendererSuelo != null)
             {
                 materialSuelo = rendererSuelo.material;
+                materialSuelo.SetFloat("_Step_Time", -1000f);
             }
 
             if (animator == null)
@@ -52,6 +60,7 @@ namespace _Scripts
         public void Evento_PieTocaElSuelo()
         {
             DispararPulsoEnShader();
+            StartCoroutine(ExpandirShockwaveCoroutine());
         }
         private void DispararPulsoEnShader()
         {
@@ -61,6 +70,44 @@ namespace _Scripts
 
             materialSuelo.SetVector("_Step_Position", posicionImpacto);
             materialSuelo.SetFloat("_Step_Time", Time.time);
+        }
+        
+        
+        private IEnumerator ExpandirShockwaveCoroutine()
+        {
+            float radioActual = 0f;
+            Vector3 posicionImpacto = puntoDeImpacto ? puntoDeImpacto.position : transform.position;
+            
+            HashSet<DestructibleCrate> cajasRompiblesHit = new HashSet<DestructibleCrate>();
+
+            while (radioActual < radioMaximoShockwave)
+            {
+                radioActual += velocidadExpansionShockwave * Time.deltaTime;
+
+                Collider[] colliders = Physics.OverlapSphere(posicionImpacto, radioActual, capaCajas);
+
+                foreach (Collider col in colliders)
+                {
+                    DestructibleCrate caja = col.GetComponent<DestructibleCrate>();
+                    
+                    if (caja && !cajasRompiblesHit.Contains(caja))
+                    {
+                        cajasRompiblesHit.Add(caja); 
+                        caja.BreakCrate();           
+                    }
+                }
+
+                yield return null; 
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (puntoDeImpacto != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(puntoDeImpacto.position, radioMaximoShockwave);
+            }
         }
     }
 }

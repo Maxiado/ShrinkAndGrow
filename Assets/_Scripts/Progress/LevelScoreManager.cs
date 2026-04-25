@@ -41,7 +41,7 @@ public class LevelScoreManager : MonoBehaviour
     {
         // Forzamos que el texto empiece en 0
         UpdateScrapsUI();
-        UpdateUI();
+       // UpdateUI();
     }
 
     void Update()
@@ -49,7 +49,7 @@ public class LevelScoreManager : MonoBehaviour
         if (levelCompleted) return;
 
         timeElapsed += Time.deltaTime;
-        UpdateUI();
+        //UpdateUI();
     }
 
     // El jugador llama a esto cuando toca la tecla Q o E
@@ -57,7 +57,7 @@ public class LevelScoreManager : MonoBehaviour
     {
         if (levelCompleted) return;
         transformationsUsed++;
-        UpdateUI();
+       // UpdateUI();
     }
 
     // El coleccionable (QuantumScrap) llama a esto al ser tocado
@@ -101,29 +101,29 @@ public class LevelScoreManager : MonoBehaviour
             trophysCounterText.text = $"{inLevelTrophysCollected}";
         }
     }
-    private void UpdateUI()
-    {
-        // (Aquí va el mismo código que ya tenías para actualizar el tiempo, el multiplicador y las transformaciones)
-        if (timerText != null)
-        {
-            int minutes = Mathf.FloorToInt(timeElapsed / 60F);
-            int seconds = Mathf.FloorToInt(timeElapsed - minutes * 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        }
-
-        if (multiplierText != null)
-        {
-            multiplierText.text = $"Bono: x{GetCurrentMultiplier():F1}";
-            if (GetCurrentMultiplier() <= 0) multiplierText.color = Color.gray;
-            else multiplierText.color = Color.yellow;
-        }
-
-        if (transformationCountText != null)
-        {
-            transformationCountText.text = $"Cambios: {transformationsUsed} / {parTransformations}";
-            if (transformationsUsed > parTransformations) transformationCountText.color = Color.red;
-        }
-    }
+    // private void UpdateUI()
+    // {
+    //     // (Aquí va el mismo código que ya tenías para actualizar el tiempo, el multiplicador y las transformaciones)
+    //     if (timerText != null)
+    //     {
+    //         int minutes = Mathf.FloorToInt(timeElapsed / 60F);
+    //         int seconds = Mathf.FloorToInt(timeElapsed - minutes * 60);
+    //         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    //     }
+    //
+    //     if (multiplierText != null)
+    //     {
+    //         multiplierText.text = $"Bono: x{GetCurrentMultiplier():F1}";
+    //         if (GetCurrentMultiplier() <= 0) multiplierText.color = Color.gray;
+    //         else multiplierText.color = Color.yellow;
+    //     }
+    //
+    //     if (transformationCountText != null)
+    //     {
+    //         transformationCountText.text = $"Cambios: {transformationsUsed} / {parTransformations}";
+    //         if (transformationsUsed > parTransformations) transformationCountText.color = Color.red;
+    //     }
+    // }
 
     public void FinishLevel()
     {

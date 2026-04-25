@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F1)) RestartLevel();
+    }
+
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
