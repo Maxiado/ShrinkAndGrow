@@ -35,7 +35,8 @@ public class PlayerScaleController : MonoBehaviour
     [Header("Validación de Espacio")] public CapsuleCollider playerCollider; 
     public LayerMask obstacleMask; 
     public GroundSensor groundSensor;
-    
+
+    [Header("VFX")] [SerializeField] private ParticleSystem dustParticleSystem;
     private Vector3 targetScale;
     private float targetCamDistance;
     private CinemachineFramingTransposer framingTransposer;
@@ -49,6 +50,7 @@ public class PlayerScaleController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         framingTransposer = vCam.GetCinemachineComponent<CinemachineFramingTransposer>();
         SetSize(PlayerSize.Normal, true);
+        dustParticleSystem.Stop();
     }
 
     void Update()
@@ -111,16 +113,19 @@ public class PlayerScaleController : MonoBehaviour
                 targetScale = microScale;
                 targetCamDistance = microCamDistance;
                 rb.mass = microMass;
+                dustParticleSystem.Play();
                 break;
             case PlayerSize.Normal:
                 targetScale = normalScale;
                 targetCamDistance = normalCamDistance;
                 rb.mass = normalMass;
+                dustParticleSystem.Stop();
                 break;
             case PlayerSize.Titan:
                 targetScale = titanScale;
                 targetCamDistance = titanCamDistance;
                 rb.mass = titanMass;
+                dustParticleSystem.Stop();
                 break;
         }
         

@@ -1290,7 +1290,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8537761, y: 4.3190002, z: 30.761963}
+  m_LocalPosition: {x: 0.8537761, y: 4.3190002, z: 20.761972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1591,7 +1591,7 @@ MonoBehaviour:
   timerText: {fileID: 174127616}
   multiplierText: {fileID: 332976217}
   transformationCountText: {fileID: 2025739596}
-  trophysCounterText: {fileID: 1337409567}
+  trophysCounterText: {fileID: 0}
   inLevelScrapsText: {fileID: 280011313}
   inLevelScrapsCollected: 0
   inLevelTrophysCollected: 0
@@ -1629,6 +1629,12 @@ MonoBehaviour:
   - {fileID: 1908700674}
   - {fileID: 789938794}
   playerRb: {fileID: 1908700670}
+--- !u!198 &378731052 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 502569205774008681, guid: 3933d60c7214e2b43b5ebee45021bc9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 158272443165867471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &391561661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2064,7 +2070,7 @@ Transform:
   m_GameObject: {fileID: 547871568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8537761, y: 4.3190002, z: 30.761963}
+  m_LocalPosition: {x: 0.8537761, y: 4.3190002, z: 20.761972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5105,7 +5111,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 2.000001
+  m_CameraDistance: 12
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -5625,26 +5631,6 @@ PrefabInstance:
       propertyPath: rendererSuelo
       value: 
       objectReference: {fileID: 1169536904}
-    - target: {fileID: 3126316567447823080, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: capaCajas.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 3126316567447823080, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: radioMaximoShockwave
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3126316567447823080, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: playerScaleController
-      value: 
-      objectReference: {fileID: 1908700669}
-    - target: {fileID: 3126316567447823080, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: velocidadExpansionShockwave
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 3566104228777583527, guid: 3933d60c7214e2b43b5ebee45021bc9d,
         type: 3}
       propertyPath: m_Name
@@ -5667,19 +5653,9 @@ PrefabInstance:
       objectReference: {fileID: 547871569}
     - target: {fileID: 8821273932006428415, guid: 3933d60c7214e2b43b5ebee45021bc9d,
         type: 3}
-      propertyPath: microCamDistance
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8821273932006428415, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: titanCamDistance
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8821273932006428415, guid: 3933d60c7214e2b43b5ebee45021bc9d,
-        type: 3}
-      propertyPath: normalCamDistance
-      value: 12
-      objectReference: {fileID: 0}
+      propertyPath: dustParticleSystem
+      value: 
+      objectReference: {fileID: 378731052}
     - target: {fileID: 8949716817974959691, guid: 3933d60c7214e2b43b5ebee45021bc9d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5729,6 +5705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092321846306586635, guid: 3933d60c7214e2b43b5ebee45021bc9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
