@@ -22,7 +22,6 @@ public class ShieldHoleController : MonoBehaviour
 
     void Start()
     {
-        // ESTA ES LA LÍNEA QUE FALTABA: Asignar el material
         if (shieldRenderer)
         {
             shieldMat = shieldRenderer.material;
@@ -33,39 +32,29 @@ public class ShieldHoleController : MonoBehaviour
 
     void Update()
     {
-        // Nos aseguramos de tener todas las referencias antes de hacer cálculos
-        if (player != null && shieldCollider != null && playerPickUp != null)
+        if (player && shieldCollider && playerPickUp)
         {
-            // 1. Cálculos de Posición y Distancia
             Vector3 playerTarget = player.position;
             Vector3 pointOnShield = shieldCollider.ClosestPoint(playerTarget);
             float distanceToShield = Vector3.Distance(playerTarget, pointOnShield);
 
-            // 2. Leemos el estado del jugador
             bool isHoldingObject = playerPickUp.IsHoldingObject;
             
-
-            // 4. Lógica de Forzar Soltar (El escudo bloquea objetos)
             if (isHoldingObject && distanceToShield <= dropDistance)
             {
-                // Calculamos el empuje: Desde el punto del escudo hacia la posición del jugador
                 Vector3 pushBackDirection = (player.position - pointOnShield).normalized;
-                pushBackDirection.y = 1.0f; // Pequeño salto hacia arriba para que el rebote se vea natural
+                pushBackDirection.y = 1.0f;
             
-                // Obligamos al jugador a soltar y le pasamos la fuerza de empuje
                 playerPickUp.ForceDrop(pushBackDirection * 4f);
             }
             
-            // 5. Lógica de Apertura del Agujero
             float currentRadius = 0f;
             if (distanceToShield < activationDistance)
             {
-                // Calculamos porcentaje: 0 (está lejos) a 1 (está pegado al escudo)
                 float percentage = 1f - (distanceToShield / activationDistance);
                 currentRadius = Mathf.Lerp(0f, maxHoleRadius, percentage);
             }
 
-            // 6. Enviamos los datos finales al Shader
             shieldMat.SetVector("_PlayerPosition", pointOnShield);
             shieldMat.SetFloat("_HoleRadius", currentRadius); 
         }

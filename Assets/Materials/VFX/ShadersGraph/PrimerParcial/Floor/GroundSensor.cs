@@ -7,7 +7,6 @@ namespace Materials.VFX.ShadersGraph.Floor
         public PlayerMovement playerMovement;
         public LayerMask groundMask;
 
-        // ¡NUEVA VARIABLE! Para guardar la información del suelo que pisamos
         [HideInInspector] public Collider currentGroundedCollider;
 
         void OnTriggerStay(Collider other)
@@ -16,7 +15,6 @@ namespace Materials.VFX.ShadersGraph.Floor
             {
                 playerMovement.SetGroundedState(true);
             
-                // ¡NUEVO! Guardamos el collider del objeto que estamos pisando
                 currentGroundedCollider = other; 
             }
         }
@@ -27,7 +25,6 @@ namespace Materials.VFX.ShadersGraph.Floor
             {
                 playerMovement.SetGroundedState(false);
             
-                // ¡NUEVO! Al salir, reseteamos la referencia
                 if (currentGroundedCollider == other)
                 {
                     currentGroundedCollider = null;

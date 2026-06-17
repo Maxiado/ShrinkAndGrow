@@ -38,9 +38,9 @@ public class ScannerRaysController : MonoBehaviour
         
         for (int i = 0; i < 3; i++)
         {
-            SetColor(color * 5f); // Verde intenso HDR
+            SetColor(color * 5f); 
             yield return new WaitForSeconds(0.2f);
-            SetColor(Color.black); // Opcional: un parpadeo apagado
+            SetColor(Color.black); 
             yield return new WaitForSeconds(0.1f);
         }
         if(color == Color.green) SetColor(successGreen * 5);

@@ -26,14 +26,12 @@ public class MartianShaderController : MonoBehaviour
 
     private void Awake()
     {
-        // Cacheamos el ID de la propiedad para mayor rendimiento
         propertyID = Shader.PropertyToID(propertyName);
         propBlock = new MaterialPropertyBlock();
     }
 
     private void Start()
     {
-        // Aseguramos que el efecto empiece en el suelo
         SetShaderValue(startValue);
     }
 
@@ -54,13 +52,10 @@ public class MartianShaderController : MonoBehaviour
     /// </summary>
     private IEnumerator ShaderSequenceRoutine()
     {
-        // 1. El efecto sube del suelo (-1) a la cabeza (6)
         yield return StartCoroutine(SweepShaderOverTime(startValue, endValue, durationPerSweep));
 
-        // 2. El efecto baja de la cabeza (6) al suelo (-1)
         yield return StartCoroutine(SweepShaderOverTime(endValue, startValue, durationPerSweep));
 
-        // 3. Finaliza
         currentRoutine = null;
     }
 
@@ -79,19 +74,17 @@ public class MartianShaderController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Aseguramos que llegue exactamente al valor de destino
         SetShaderValue(end);
     }
 
     /// <summary>
-    /// Aplica el valor del shader a todos los MeshRenderers usando MaterialPropertyBlock.
+    /// Aplica el valor del shader usando MaterialPropertyBlock.
     /// </summary>
     private void SetShaderValue(float value)
     {
         foreach (SkinnedMeshRenderer renderer in meshRenderers)
         {
-            if (renderer != null)
+            if (renderer)
             {
                 renderer.GetPropertyBlock(propBlock);
                 propBlock.SetFloat(propertyID, value);

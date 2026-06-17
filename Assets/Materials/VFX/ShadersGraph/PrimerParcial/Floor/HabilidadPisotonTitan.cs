@@ -19,7 +19,7 @@ namespace _Scripts
         public float radioMaximoShockwave = 10f;      
         public float velocidadExpansionShockwave = 15f; 
         public LayerMask capaCajas;
-        
+        public PlayerScaleController playerScaleController;
         private bool habilidadEnUso = false;
 
         private void Start()
@@ -38,6 +38,8 @@ namespace _Scripts
 
         private void Update()
         {
+            if (playerScaleController.currentSize != PlayerScaleController.PlayerSize.Titan) return;
+            
             if (!Input.GetKeyDown(teclaActivacion)) return;
             {
                 if (!habilidadEnUso) EjecutarPisoton();

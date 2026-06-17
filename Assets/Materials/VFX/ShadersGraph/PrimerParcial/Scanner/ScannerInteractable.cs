@@ -17,13 +17,10 @@ public class ScannerInteractable : MonoBehaviour
 
     private void Update()
     {
-        // Solo verificamos si está en rango y presiona la tecla
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
         {
-            // Validar si ya está escaneando para no solapar animaciones
             if (scanner.isScanning) return;
 
-            // Iniciar el escaneo SIEMPRE, sin importar lo que tenga en las manos
             StartCoroutine(FullSecuritySequence());
         }
     }
@@ -31,18 +28,14 @@ public class ScannerInteractable : MonoBehaviour
     private IEnumerator FullSecuritySequence()
     {
         GameManager.Instance.LockPlayerInput(true);
-        // 1. Iniciamos movimiento físico y efecto visual
         scanner.StartRotationSequence();
         shaderEffect.PlayShaderEffect();
 
-        // 2. ESPERAR a que el escáner termine su ciclo (ida y vuelta)
         float totalWaitTime = scanner.durationPerMove * 2;
         yield return new WaitForSeconds(totalWaitTime);
 
-        // 3. VERIFICACIÓN AL FINALIZAR EL ESCANEO
         bool hasValidKey = false;
 
-        // Validamos que el jugador siga dentro de la zona al terminar el escaneo
         if (playerRef) 
         {
             IPickable item = playerRef.GetComponentInChildren<IPickable>();
@@ -53,7 +46,6 @@ public class ScannerInteractable : MonoBehaviour
             }
         }
 
-        // 4. RESULTADO DEL ESCANEO
         if (hasValidKey)
         {
             if (raysEffect) raysEffect.FlashSuccess();
@@ -84,7 +76,7 @@ public class ScannerInteractable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            playerRef = null; // Limpiamos la referencia si se va
+            playerRef = null;
             fPrompt.SetActive(false);
         }
     }
