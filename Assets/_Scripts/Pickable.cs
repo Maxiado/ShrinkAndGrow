@@ -7,8 +7,10 @@ public class Pickable : MonoBehaviour, IPickable
     [SerializeField] private PickableType pickableType;
     [SerializeField] private float transitionDuration;
     private Rigidbody rb;
-    private Collider col; // Agregamos una referencia al Collider
-    public Collider colChild; // Agregamos una referencia al Collider
+    private Collider col; 
+    public Collider colChild;
+
+    //Variables para el Shader
     public string pickupVariableName = "_IsPickedUp";
     private Material artifactMaterial;
     private Coroutine transitionCoroutine;
@@ -20,18 +22,6 @@ public class Pickable : MonoBehaviour, IPickable
         if (!rend) return;
         artifactMaterial = rend.material;
         artifactMaterial.SetFloat(pickupVariableName, 0f);
-    }
-    public void ActivateArtifact()
-    {
-        if (!artifactMaterial) return;
-        if (transitionCoroutine != null) StopCoroutine(transitionCoroutine);
-        transitionCoroutine = StartCoroutine(SmoothTransition(0f, 1f));
-    }
-    public void DeactivateArtifact()
-    {
-        if (!artifactMaterial) return;
-        if (transitionCoroutine != null) StopCoroutine(transitionCoroutine);
-        transitionCoroutine = StartCoroutine(SmoothTransition(1f, 0f));
     }
     public PickableType GetPickableType()
     {
@@ -61,6 +51,19 @@ public class Pickable : MonoBehaviour, IPickable
         DeactivateArtifact();
     }
     
+    //Activacion y desactivacion del shader progresivamente
+    private void ActivateArtifact()
+    {
+        if (!artifactMaterial) return;
+        if (transitionCoroutine != null) StopCoroutine(transitionCoroutine);
+        transitionCoroutine = StartCoroutine(SmoothTransition(0f, 1f));
+    }
+    private void DeactivateArtifact()
+    {
+        if (!artifactMaterial) return;
+        if (transitionCoroutine != null) StopCoroutine(transitionCoroutine);
+        transitionCoroutine = StartCoroutine(SmoothTransition(1f, 0f));
+    }
     
     private IEnumerator SmoothTransition(float startValue, float endValue)
     {
