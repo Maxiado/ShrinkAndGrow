@@ -123,8 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapPrefab: {fileID: 6667450447796708894, guid: 3ce94b88c56dda241afa767244addd22,
     type: 3}
+  vfxExplosionPrefab: {fileID: 8051820671510122860, guid: de06d42d24703914aa151ca91657d9cd,
+    type: 3}
   minScraps: 2
   maxScraps: 5
-  destructionParticles: {fileID: 0}
   breakSound: {fileID: 0}
   popForce: 5

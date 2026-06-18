@@ -125,6 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrapValue: 5
   spinSpeed: 120
+  collectParticles: {fileID: 6760439357361647006, guid: 7ce9d8b727ea7474c84c9dda367b2155,
+    type: 3}
 --- !u!54 &414856742552051508
 Rigidbody:
   m_ObjectHideFlags: 0
