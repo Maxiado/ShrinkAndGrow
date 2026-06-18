@@ -44,12 +44,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Amount: -0.21
+    - _Amount: -1
     - _Edge_thickness: 0.05
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _speed: 0.44
+    - _speed: 0.1
     m_Colors:
+    - _baseColor: {r: 1, g: 0, b: 0.059340954, a: 0}
     - _color_edge: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

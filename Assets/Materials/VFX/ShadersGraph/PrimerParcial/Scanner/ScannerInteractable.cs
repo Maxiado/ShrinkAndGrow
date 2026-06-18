@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class ScannerInteractable : MonoBehaviour
    [Header("Referencias de Sistemas")]
     public XAxisRotator scanner;
     public MartianShaderController shaderEffect;
-    public GameObject doorToUnlock;
+    public DisolveController doorToUnlock;
 
     [Header("Configuración")]
     public PickableType requiredKey = PickableType.RedKey;
@@ -14,6 +15,14 @@ public class ScannerInteractable : MonoBehaviour
     private bool isPlayerInRange = false;
     private GameObject playerRef;
     public GameObject fPrompt;
+
+    private void Start()
+    {
+        if (!doorToUnlock)
+        {
+            doorToUnlock = FindFirstObjectByType<DisolveController>(); 
+        }
+    }
 
     private void Update()
     {
@@ -49,9 +58,9 @@ public class ScannerInteractable : MonoBehaviour
         if (hasValidKey)
         {
             if (raysEffect) raysEffect.FlashSuccess();
-            if (doorToUnlock)
+            if (doorToUnlock && doorToUnlock.gameObject.activeInHierarchy)
             {
-                doorToUnlock.SetActive(false); 
+                doorToUnlock.ActivateDisolve();
             }
         }
         else
