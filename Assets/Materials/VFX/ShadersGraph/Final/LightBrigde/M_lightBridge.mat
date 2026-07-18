@@ -52,11 +52,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _CellDensity: 15
     - _Extension: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Voronoi: 0.3
+    - _VoronoiSpeed: 5
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.9528302, b: 0.8790923, a: 0}
-    - _EmissionColor: {r: 0.8867924, g: 0.78693146, b: 0, a: 0}
+    - _BaseColor: {r: 0.07591559, g: 0.509434, b: 0, a: 0}
+    - _EmissionColor: {r: 0.35830188, g: 1, b: 0, a: 0}
+    - _LineColor: {r: 16, g: 14.0224, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
