@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering; 
 
 public class LightBridgeController : MonoBehaviour
 {
@@ -11,8 +10,8 @@ public class LightBridgeController : MonoBehaviour
 
     [Header("Complex System References")]
     public ParticleSystem sparkParticles;
-    public Transform startPoint; // Donde nace la luz
-    public Transform endPoint;   // Donde termina la luz
+    public Transform startPoint; 
+    public Transform endPoint;   
 
     private Material bridgeMaterial;
     private Collider bridgeCollider;
@@ -22,38 +21,28 @@ public class LightBridgeController : MonoBehaviour
     void Start()
     {
         bridgeCollider = GetComponent<Collider>();
-        Renderer rend = GetComponent<Renderer>();
+        var rend = GetComponent<Renderer>();
         
-        if (rend != null)
+        if (rend)
         {
             bridgeMaterial = rend.material;
-            bridgeMaterial.SetFloat(extensionProperty, 0f); // Empieza apagado
+            bridgeMaterial.SetFloat(extensionProperty, 0f);
         }
 
-        if (bridgeCollider != null) bridgeCollider.enabled = false;
+        if (bridgeCollider) bridgeCollider.enabled = false;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ToggleBridge();
-        }
-    }
-
+    
     public void ToggleBridge()
     {
         if (bridgeCoroutine != null) StopCoroutine(bridgeCoroutine);
 
         if (isBridgeActive)
         {
-            // Apagar (Desintegrar)
             bridgeCoroutine = StartCoroutine(AnimateBridge(1f, 0f));
             isBridgeActive = false;
         }
         else
         {
-            // Encender (Crear)
             bridgeCoroutine = StartCoroutine(AnimateBridge(0f, 1f));
             isBridgeActive = true;
         }
@@ -61,25 +50,19 @@ public class LightBridgeController : MonoBehaviour
 
     private IEnumerator AnimateBridge(float startVal, float endVal)
     {
-        // Activar colisión rápido si se está encendiendo
-        if (endVal > 0.5f && bridgeCollider != null) bridgeCollider.enabled = true;
+        if (endVal > 0.5f && bridgeCollider) bridgeCollider.enabled = true;
 
-        // Encender el emisor de partículas
-        if (sparkParticles != null) sparkParticles.Play();
+        if (sparkParticles) sparkParticles.Play();
 
-        float timeElapsed = 0f;
+        var timeElapsed = 0f;
         while (timeElapsed < animationDuration)
         {
             timeElapsed += Time.deltaTime;
+            var currentValue = Mathf.Lerp(startVal, endVal, timeElapsed / animationDuration);
             
-            // currentValue va de 0 a 1 (o de 1 a 0)
-            float currentValue = Mathf.Lerp(startVal, endVal, timeElapsed / animationDuration);
+            if (bridgeMaterial) bridgeMaterial.SetFloat(extensionProperty, currentValue);
             
-            // 1. Actualiza el Shader
-            if (bridgeMaterial != null) bridgeMaterial.SetFloat(extensionProperty, currentValue);
-            
-            // 2. Mueve las partículas EXACTAMENTE al borde de la luz
-            if (sparkParticles != null && startPoint != null && endPoint != null)
+            if (sparkParticles && startPoint && endPoint)
             {
                 sparkParticles.transform.position = Vector3.Lerp(startPoint.position, endPoint.position, currentValue);
             }
@@ -87,13 +70,10 @@ public class LightBridgeController : MonoBehaviour
             yield return null;
         }
 
-        // Asegurar valores finales
-        if (bridgeMaterial != null) bridgeMaterial.SetFloat(extensionProperty, endVal);
+        if (bridgeMaterial) bridgeMaterial.SetFloat(extensionProperty, endVal);
         
-        // Apagar el emisor de partículas cuando termina de crecer/achicarse
-        if (sparkParticles != null) sparkParticles.Stop();
+        if (sparkParticles) sparkParticles.Stop();
 
-        // Quitar colisión si se apagó
-        if (endVal < 0.5f && bridgeCollider != null) bridgeCollider.enabled = false;
+        if (endVal < 0.5f && bridgeCollider) bridgeCollider.enabled = false;
     }
 }
