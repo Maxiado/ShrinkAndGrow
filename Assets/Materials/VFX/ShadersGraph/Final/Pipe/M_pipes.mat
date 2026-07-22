@@ -68,6 +68,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Amplitude: 0.01
+    - _Frequency: 1
+    - _PulseSpeed: 2.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
