@@ -27,7 +27,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -52,13 +52,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FloatingHeight: 0.1
+    - _EnergyDensity: 30
+    - _EnergySpeed: 0.1
+    - _FloatingHeight: 0.2
     - _FloatingSpeed: 0.5
-    - _PulseAmount: 0.05
+    - _PulseAmount: 0.1
     - _PulseSpeed: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 0, g: 0.4854684, b: 0.8962264, a: 0}
+    - _Color: {r: 0.43396226, g: 0.006140965, b: 0.01540119, a: 0}
+    - _Color2: {r: 1.194239, g: 1.397341, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
